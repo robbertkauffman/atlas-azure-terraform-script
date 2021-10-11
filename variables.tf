@@ -20,23 +20,6 @@ variable "locations" {
   }))
   default = [
     # Uncomment from here for single-region clusters
-    # {
-    #   location: "eastus2"
-    #   azure_workload_resource_group_name: "mongodb-atlas-poc"
-    #   azure_virtual_network_name: "eastus2-workload-vnet"
-    #   azure_subnet_name: "default"
-    #   azure_private_endpoint_name: "atlas-tf-pe-eastus2"
-    #   azure_private_service_connection_name: "atlas-tf-psc-eastus2"
-    #   atlas_resource_group_name: "atlas-tf-rg-eastus2"
-    #   atlas_region: "US_EAST_2"
-    #   atlas_cluster_electable_nodes: 3
-    #   atlas_cluster_priority: 7
-    #   atlas_cluster_read_only_nodes: 0
-    #   atlas_cluster_analytics_nodes: 0
-    # }
-    # End uncomment for single-region clusters
-
-    # Uncomment from here for multi-region clusters
     {
       location: "eastus2"
       azure_workload_resource_group_name: "mongodb-atlas-poc"
@@ -46,39 +29,56 @@ variable "locations" {
       azure_private_service_connection_name: "atlas-tf-psc-eastus2"
       atlas_resource_group_name: "atlas-tf-rg-eastus2"
       atlas_region: "US_EAST_2"
-      atlas_cluster_electable_nodes: 2
+      atlas_cluster_electable_nodes: 3
       atlas_cluster_priority: 7
       atlas_cluster_read_only_nodes: 0
       atlas_cluster_analytics_nodes: 0
-    },
-    {
-      location: "westus2"
-      azure_workload_resource_group_name: "mongodb-atlas-poc-westus2"
-      azure_virtual_network_name: "westus2-workload-vnet"
-      azure_subnet_name: "default"
-      azure_private_endpoint_name: "atlas-tf-pe-westus2"
-      azure_private_service_connection_name: "atlas-tf-psc-westus2"
-      atlas_resource_group_name: "atlas-tf-rg-westus2"
-      atlas_region: "US_WEST_2"
-      atlas_cluster_electable_nodes: 2
-      atlas_cluster_priority: 6
-      atlas_cluster_read_only_nodes: 0
-      atlas_cluster_analytics_nodes: 0
-    },
-    {
-      location: "southcentralus"
-      azure_workload_resource_group_name: "mongodb-atlas-poc-southcentralus"
-      azure_virtual_network_name: "southcentralus-workload-vnet"
-      azure_subnet_name: "default"
-      azure_private_endpoint_name: "atlas-tf-pe-southcentralus"
-      azure_private_service_connection_name: "atlas-tf-psc-southcentralus"
-      atlas_resource_group_name: "atlas-tf-rg-southcentralus"
-      atlas_region: "US_SOUTH_CENTRAL"
-      atlas_cluster_electable_nodes: 1
-      atlas_cluster_priority: 5
-      atlas_cluster_read_only_nodes: 0
-      atlas_cluster_analytics_nodes: 0
     }
+    # End uncomment for single-region clusters
+
+    # Uncomment from here for multi-region clusters
+    # {
+    #   location: "eastus2"
+    #   azure_workload_resource_group_name: "mongodb-atlas-poc"
+    #   azure_virtual_network_name: "eastus2-workload-vnet"
+    #   azure_subnet_name: "default"
+    #   azure_private_endpoint_name: "atlas-tf-pe-eastus2"
+    #   azure_private_service_connection_name: "atlas-tf-psc-eastus2"
+    #   atlas_resource_group_name: "atlas-tf-rg-eastus2"
+    #   atlas_region: "US_EAST_2"
+    #   atlas_cluster_electable_nodes: 2
+    #   atlas_cluster_priority: 7
+    #   atlas_cluster_read_only_nodes: 0
+    #   atlas_cluster_analytics_nodes: 0
+    # },
+    # {
+    #   location: "westus2"
+    #   azure_workload_resource_group_name: "mongodb-atlas-poc-westus2"
+    #   azure_virtual_network_name: "westus2-workload-vnet"
+    #   azure_subnet_name: "default"
+    #   azure_private_endpoint_name: "atlas-tf-pe-westus2"
+    #   azure_private_service_connection_name: "atlas-tf-psc-westus2"
+    #   atlas_resource_group_name: "atlas-tf-rg-westus2"
+    #   atlas_region: "US_WEST_2"
+    #   atlas_cluster_electable_nodes: 2
+    #   atlas_cluster_priority: 6
+    #   atlas_cluster_read_only_nodes: 0
+    #   atlas_cluster_analytics_nodes: 0
+    # },
+    # {
+    #   location: "southcentralus"
+    #   azure_workload_resource_group_name: "mongodb-atlas-poc-southcentralus"
+    #   azure_virtual_network_name: "southcentralus-workload-vnet"
+    #   azure_subnet_name: "default"
+    #   azure_private_endpoint_name: "atlas-tf-pe-southcentralus"
+    #   azure_private_service_connection_name: "atlas-tf-psc-southcentralus"
+    #   atlas_resource_group_name: "atlas-tf-rg-southcentralus"
+    #   atlas_region: "US_SOUTH_CENTRAL"
+    #   atlas_cluster_electable_nodes: 1
+    #   atlas_cluster_priority: 5
+    #   atlas_cluster_read_only_nodes: 0
+    #   atlas_cluster_analytics_nodes: 0
+    # }
     # End uncomment for multi-region clusters
   ]
 }
@@ -99,7 +99,7 @@ variable "atlas_cluster_name" {
 
 variable "atlas_cluster_type" {
   description = "Type of Atlas cluster (SHARDED or REPLICASET)"
-  default     = "SHARDED"
+  default     = "REPLICASET"
 }
 
 variable "atlas_cluster_encryption" {

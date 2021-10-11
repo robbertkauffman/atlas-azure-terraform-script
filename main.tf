@@ -117,54 +117,54 @@ module "private_link_region_1" {
   azure_subnet_id                       = data.azurerm_subnet.workload_region_1.id
 }
 
-# Uncomment this block for multi-region clusters
-data "azurerm_subnet" "workload_region_2" {
-  name                 = var.locations[1].azure_subnet_name
-  virtual_network_name = var.locations[1].azure_virtual_network_name
-  resource_group_name  = var.locations[1].azure_workload_resource_group_name
-}
+# # Uncomment this block for multi-region clusters
+# data "azurerm_subnet" "workload_region_2" {
+#   name                 = var.locations[1].azure_subnet_name
+#   virtual_network_name = var.locations[1].azure_virtual_network_name
+#   resource_group_name  = var.locations[1].azure_workload_resource_group_name
+# }
 
-# Uncomment this block for multi-region clusters
-module "atlas_resgrp_region_2" {
-  source   = "./modules/azure_resourcegroups"
-  name     = var.locations[1].atlas_resource_group_name
-  location = var.locations[1].location
-}
+# # Uncomment this block for multi-region clusters
+# module "atlas_resgrp_region_2" {
+#   source   = "./modules/azure_resourcegroups"
+#   name     = var.locations[1].atlas_resource_group_name
+#   location = var.locations[1].location
+# }
 
-# Uncomment this block for multi-region clusters
-module "private_link_region_2" {
-  source = "./modules/private_link"
+# # Uncomment this block for multi-region clusters
+# module "private_link_region_2" {
+#   source = "./modules/private_link"
 
-  atlas_project_id                      = data.mongodbatlas_project.atlas_project.project_id
-  location                              = var.locations[1].location
-  azure_rg                              = var.locations[1].atlas_resource_group_name
-  azure_private_link_endpoint_name      = var.locations[1].azure_private_endpoint_name
-  azure_private_service_connection_name = var.locations[1].azure_private_service_connection_name
-  azure_subnet_id                       = data.azurerm_subnet.workload_region_2.id
-}
+#   atlas_project_id                      = data.mongodbatlas_project.atlas_project.project_id
+#   location                              = var.locations[1].location
+#   azure_rg                              = var.locations[1].atlas_resource_group_name
+#   azure_private_link_endpoint_name      = var.locations[1].azure_private_endpoint_name
+#   azure_private_service_connection_name = var.locations[1].azure_private_service_connection_name
+#   azure_subnet_id                       = data.azurerm_subnet.workload_region_2.id
+# }
 
-# Uncomment this block for multi-region clusters
-data "azurerm_subnet" "workload_region_3" {
-  name                 = var.locations[2].azure_subnet_name
-  virtual_network_name = var.locations[2].azure_virtual_network_name
-  resource_group_name  = var.locations[2].azure_workload_resource_group_name
-}
+# # Uncomment this block for multi-region clusters
+# data "azurerm_subnet" "workload_region_3" {
+#   name                 = var.locations[2].azure_subnet_name
+#   virtual_network_name = var.locations[2].azure_virtual_network_name
+#   resource_group_name  = var.locations[2].azure_workload_resource_group_name
+# }
 
-# Uncomment this block for multi-region clusters
-module "atlas_resgrp_region_3" {
-  source   = "./modules/azure_resourcegroups"
-  name     = var.locations[2].atlas_resource_group_name
-  location = var.locations[2].location
-}
+# # Uncomment this block for multi-region clusters
+# module "atlas_resgrp_region_3" {
+#   source   = "./modules/azure_resourcegroups"
+#   name     = var.locations[2].atlas_resource_group_name
+#   location = var.locations[2].location
+# }
 
-# Uncomment this block for multi-region clusters
-module "private_link_region_3" {
-  source = "./modules/private_link"
+# # Uncomment this block for multi-region clusters
+# module "private_link_region_3" {
+#   source = "./modules/private_link"
 
-  atlas_project_id                      = data.mongodbatlas_project.atlas_project.project_id
-  location                              = var.locations[2].location
-  azure_rg                              = var.locations[2].atlas_resource_group_name
-  azure_private_link_endpoint_name      = var.locations[2].azure_private_endpoint_name
-  azure_private_service_connection_name = var.locations[2].azure_private_service_connection_name
-  azure_subnet_id                       = data.azurerm_subnet.workload_region_3.id
-}
+#   atlas_project_id                      = data.mongodbatlas_project.atlas_project.project_id
+#   location                              = var.locations[2].location
+#   azure_rg                              = var.locations[2].atlas_resource_group_name
+#   azure_private_link_endpoint_name      = var.locations[2].azure_private_endpoint_name
+#   azure_private_service_connection_name = var.locations[2].azure_private_service_connection_name
+#   azure_subnet_id                       = data.azurerm_subnet.workload_region_3.id
+# }
